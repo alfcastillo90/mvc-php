@@ -58,16 +58,15 @@ class Database
     private function __construct()
     {
        try {
-		   //load from Config/Config.ini
-		   $config = App::getConfig();
-		   $this->_dbHost = $config["host"];
-		   $this->_dbUser = $config["user"];
-		   $this->_dbPassword = $config["password"];
-		   $this->_dbName = $config["database"];
-
-           $this->_connection = new \PDO('mysql:host='.$this->_dbHost.'; dbname='.$this->_dbName, $this->_dbUser, $this->_dbPassword);
-           $this->_connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-           $this->_connection->exec("SET CHARACTER SET utf8");
+            //load from Config/Config.ini
+            $config = App::getConfig();
+            $this->_dbHost = $config["host"];
+            $this->_dbUser = $config["user"];
+            $this->_dbPassword = $config["password"];
+            $this->_dbName = $config["database"];
+            $this->_connection = new \PDO('mysql:host='.$this->_dbHost.'; dbname='.$this->_dbName, $this->_dbUser, $this->_dbPassword);
+            $this->_connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            $this->_connection->exec("SET CHARACTER SET utf8");
        }
        catch (\PDOException $e)
        {

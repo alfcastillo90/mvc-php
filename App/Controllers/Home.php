@@ -41,4 +41,17 @@ class Home extends Controller
         $user = Users::getById($id);
         print_r($user);
     }
+    
+     public function users()
+    {
+        $users = Users::getAll();
+        print_r($users);
+    }
+    
+    public function saludo($nombre)
+    {
+        View::set("user", $nombre);
+        View::set("title", "Custom MVC");
+        View::render("home");
+    }
 }
